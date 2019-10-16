@@ -1,0 +1,18 @@
+{
+  "name": "PIO-IX-Collection",
+  "version": "1.9.0",
+  "description": "Blocks created for Colegio Industrial PIO IX basado en Jedi Collection",
+  "keywords": "PIO IX, Colegio,Jedi Academy",
+  "license": "GPL-2.0",
+  "authors": [{
+    "name": "Leandro Belli (Leaabelli)",
+    "email": "leaabelli@gmail.com",
+    "url": "https://github.com/Leaabelli"
+  }],
+  "contributors": ["Juan González-Gómez (Obijuan)"],
+  "repository": {
+    "type": "git",
+    "branch": "master",
+    "url": "https://github.com/leaabelli/icestudio-pioix-collection"
+  }
+}
