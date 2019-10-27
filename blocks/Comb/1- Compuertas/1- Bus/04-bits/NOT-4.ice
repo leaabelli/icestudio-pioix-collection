@@ -13,7 +13,7 @@
       "blocks": [
         {
           "id": "89fb1614-5e94-43a0-b157-bd2552a452fd",
-         "type": "basic.input",
+          "type": "basic.input",
           "data": {
             "name": "",
             "range": "[3:0]",
@@ -86,7 +86,7 @@
           "id": "5365ed8c-e5db-4445-938f-8d689830ea5c",
           "type": "basic.code",
           "data": {
-            "code": "//-- Puerta NOT\n\n//-- module (input wire a, output wire c);\n\n\nassign c[0] = ~a[0];\nassign c[1] = ~a[1];\nassign c[2] = ~a[2];\nassign c[3] = ~a[3];\n\n\n//-- endmodule\n",
+            "code": "//-- Puerta NOT\n\n//-- module (input wire a, output wire c);\n\n\nassign c = ~a;\n\n\n//-- endmodule\n",
             "params": [],
             "ports": {
               "in": [
@@ -125,7 +125,7 @@
             "block": "5365ed8c-e5db-4445-938f-8d689830ea5c",
             "port": "a"
           },
-          "size": 2
+          "size": 4
         },
         {
           "source": {
@@ -136,7 +136,7 @@
             "block": "34698722-6dd4-4121-a3c8-96e35b3e32f1",
             "port": "in"
           },
-          "size": 2
+          "size": 4
         }
       ]
     }

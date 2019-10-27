@@ -66,7 +66,7 @@
           "id": "5365ed8c-e5db-4445-938f-8d689830ea5c",
           "type": "basic.code",
           "data": {
-            "code": "//-- Puerta NOT\n\n//-- module (input wire a, output wire c);\n\n\nassign c[0] = ~a[0];\nassign c[1] = ~a[1];\n\n\n//-- endmodule\n",
+            "code": "//-- Puerta NOT\n\n//-- module (input wire a, output wire c);\n\n\nassign c = ~a;\n\n\n//-- endmodule\n",
             "params": [],
             "ports": {
               "in": [

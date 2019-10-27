@@ -58,8 +58,8 @@
             "pins": [
               {
                 "index": "0",
-                "name": "",
-                "value": ""
+                "name": "SW2",
+                "value": "33"
               }
             ],
             "virtual": true,
@@ -71,7 +71,7 @@
           }
         },
         {
-          "id": "149e90fe-2544-4140-849f-4734f215a0f2",
+          "id": "8b065c7a-586d-4d18-8e27-5db192be921b",
           "type": "basic.input",
           "data": {
             "name": "",
@@ -98,8 +98,8 @@
             "pins": [
               {
                 "index": "0",
-                "name": "",
-                "value": ""
+                "name": "D0",
+                "value": "2"
               }
             ],
             "virtual": true,
@@ -137,8 +137,8 @@
             "pins": [
               {
                 "index": "0",
-                "name": "",
-                "value": ""
+                "name": "D1",
+                "value": "1"
               }
             ],
             "virtual": true,
@@ -153,7 +153,7 @@
           "id": "41e51c68-e0b1-4cb6-8b59-1218f0957e23",
           "type": "basic.code",
           "data": {
-            "code": "reg Q = 1'b0;\r\nreg Qn = 1'b1;\r\nalways @(negedge clk or posedge rst or posedge set) \r\nbegin\r\n if(rst==1'b1)\r\n begin\r\n    Q <= 1'b0;\r\n    Qn <= 1'b1;\r\n end\r\n else if (set == 1'b1)\r\n begin\r\n    Q <= 1'b1;\r\n    Qn <= 1'b0;\r\n end\r\n else if(J == 1'b1 && K == 1'b0)\r\n begin\r\n     Q <= 1'b1;\r\n    Qn <= 1'b0;\r\n end\r\n \r\n else if(J == 1'b0 && K == 1'b1)\r\n begin\r\n     Q <= 1'b0;\r\n    Qn <= 1'b1;\r\n end\r\n \r\n else if(J == 1'b1 && K == 1'b1)\r\n begin\r\n Q <= ~Q; \r\n Qn <= ~Qn; \r\n end\r\n\r\nend",
+            "code": "reg fQ = 1'b0;\r\nassign Q = fQ & ~rst | set;\r\nassign Qn= ~Q;\r\n\r\nalways @(posedge clk) \r\nbegin\r\n if(J == 1'b1 && K == 1'b0)\r\n begin\r\n     fQ <= 1'b1;\r\n end\r\n \r\n else if(J == 1'b0 && K == 1'b1)\r\n begin\r\n    fQ <= 1'b0;\r\n end\r\n \r\n else if(J == 1'b1 && K == 1'b1)\r\n begin\r\n    fQ <= ~fQ; \r\n end\r\nend",
             "params": [],
             "ports": {
               "in": [
@@ -216,16 +216,6 @@
         },
         {
           "source": {
-            "block": "149e90fe-2544-4140-849f-4734f215a0f2",
-            "port": "out"
-          },
-          "target": {
-            "block": "41e51c68-e0b1-4cb6-8b59-1218f0957e23",
-            "port": "clk"
-          }
-        },
-        {
-          "source": {
             "block": "c82efff7-53ec-4349-a954-ab7add0c976e",
             "port": "out"
           },
@@ -262,6 +252,16 @@
           "target": {
             "block": "41e51c68-e0b1-4cb6-8b59-1218f0957e23",
             "port": "K"
+          }
+        },
+        {
+          "source": {
+            "block": "8b065c7a-586d-4d18-8e27-5db192be921b",
+            "port": "out"
+          },
+          "target": {
+            "block": "41e51c68-e0b1-4cb6-8b59-1218f0957e23",
+            "port": "clk"
           }
         }
       ]

@@ -133,7 +133,7 @@
           "id": "41e51c68-e0b1-4cb6-8b59-1218f0957e23",
           "type": "basic.code",
           "data": {
-            "code": "reg Q = 1'b0;\r\nreg Qn = 1'b1;\r\nalways @(negedge clk or posedge rst or posedge set) \r\nbegin\r\n if(rst==1'b1)\r\n begin\r\n    Q <= 1'b0;\r\n    Qn <= 1'b1;\r\n end\r\n else if (set == 1'b1)\r\n begin\r\n    Q <= 1'b1;\r\n    Qn <= 1'b0;\r\n end\r\n else if (T == 1'b1)\r\n begin\r\n    Q <= ~Q; \r\n    Qn <= ~Qn; \r\n end\r\nend",
+            "code": "reg fQ = 1'b0;\r\nassign Q = fQ & ~rst | set;\r\nassign Qn= ~Q;\r\n\r\nalways @(negedge clk) \r\nbegin\r\n if(T == 1'b1)\r\n begin\r\n  fQ = ~fQ;\r\n end \r\nend",
             "params": [],
             "ports": {
               "in": [
